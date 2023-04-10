@@ -1,0 +1,25 @@
+version: "3"
+services:
+  web:
+    image: nginx
+    networks:
+      my-network:
+        ipv4_address: 172.20.0.2
+    ports:
+      - "80:80"
+    environment:
+      - DB_HOST=db
+  db:
+    image: postgres
+    networks:
+      my-network:
+        ipv4_address: 172.20.0.3
+    environment:
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=password
+networks:
+  my-network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.20.0.0/16
