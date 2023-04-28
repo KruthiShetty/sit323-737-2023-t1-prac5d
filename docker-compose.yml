@@ -1,7 +1,7 @@
 version: "3"
 services:
   web:
-    image: nginx
+    image: my-node-app
     networks:
       my-network:
         ipv4_address: 172.20.0.2
